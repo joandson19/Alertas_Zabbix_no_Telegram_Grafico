@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Reescrito e Adaptado por Joandson Bezerra 
 
 import requests
 import base64
