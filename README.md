@@ -17,6 +17,13 @@
 # chown zabbix. -R /usr/lib/zabbix/alertscripts/*
 # chmod  +x /usr/lib/zabbix/alertscripts/notifica-telegram.py
 ```
+* Edite o arquivo notifica-telegram.py alterando as linha que fazem referencia a (url, login e senha)
+  Importante dizer que o usuario precisa ter no minimo permissão de leitura.
+```
+URL_ZABBIX = "https://URL DO ZABBIX"
+USER = "USUARIO DO ZABBIX"
+PASS = "SENHA DO ZABBIX"
+```
 * Importante falar que o "Item ID: {ITEM.ID1}" é obrigatorio no corpo da mensagem para que o grafico funcione.
 Segue um modelo de mensagem, o assunto fica live a sua escolha.
 ```
