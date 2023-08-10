@@ -29,7 +29,7 @@ HEIGHT = "250"
 DRAW_TYPE = "5"
 PERIOD = "3600"
 NOW = datetime.now()
-CAPTION_TEMPLATE = "Tit: {TITULO}\nDat: {NOW}\n{MENSAGEM}"
+CAPTION_TEMPLATE = "Tit: {TITULO}\nDat: {NOW}\n{MENSAGEM}"  # Adicionamos o campo {MENSAGEM}
 
 # Cria o objeto logger
 logger = logging.getLogger(__name__)
@@ -60,9 +60,9 @@ def extract_item_id(mensagem):
     else:
         return None
 
-def get_image(item_id, item_name):
+def get_image(item_id, item_name, color_code):
     r = requests.get(
-        f"{URL_ZABBIX}/chart3.php?name={item_name}&period={PERIOD}&items[0][itemid]={item_id}&items[0][drawtype]={DRAW_TYPE}&items[0][color]=C71585&width={WIDTH}&height={HEIGHT}",
+        f"{URL_ZABBIX}/chart3.php?name={item_name}&period={PERIOD}&items[0][itemid]={item_id}&items[0][drawtype]={DRAW_TYPE}&items[0][color]={color_code}&width={WIDTH}&height={HEIGHT}",
         cookies=get_cookie()
     )
     return r.content
@@ -73,14 +73,23 @@ if __name__ == "__main__":
         mensagem = sys.argv[4]
         item_id = extract_item_id(mensagem)
         
+        color_code_match = re.search(r'#(.*?)#', mensagem)
+        if color_code_match:
+            color_code = color_code_match.group(1)
+            # Remover o código de cor da mensagem original
+            mensagem = mensagem.replace(color_code_match.group(0), "")
+        else:
+            color_code = "00C800"  # Cor padrão
+        
         if item_id:
             zapi = ZabbixAPI(URL_ZABBIX)
+            zapi.session.verify = False
             zapi.login(USER, PASS)
             item = zapi.item.get(filter={"itemid": item_id})
             
             if item:
                 item_name = item[0]["name"]
-                image_data = get_image(item_id, item_name)
+                image_data = get_image(item_id, item_name, color_code)
                 
                 # Montar a mensagem que será enviada para o Telegram com formatação Markdown
                 mensagem_completa = f"{assunto}\n\n{mensagem}"
@@ -90,7 +99,7 @@ if __name__ == "__main__":
                 payload = {
                     "chat_id": TELEGRAM_CHAT_ID,
                     "caption": mensagem_completa,
-                    "parse_mode": "Markdown"
+                    "parse_mode": "Markdown"  # Indica que estamos usando formatação Markdown
                 }
                 files = {
                     "photo": ("image.png", image_data)
