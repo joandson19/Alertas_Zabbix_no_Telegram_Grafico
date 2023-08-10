@@ -19,4 +19,4 @@ Serveridade: {EVENT.SEVERITY}
 Item ID: {ITEM.ID1}
 ```
 
-### Este script é uma adaptação do script do [MarreraTech]([URL](https://github.com/MarreraTech/Zabbix/tree/main)https://github.com/MarreraTech/Zabbix/tree/main)
+### Este script é uma adaptação do script do [MarreraTech](https://github.com/MarreraTech/Zabbix/tree/main)
