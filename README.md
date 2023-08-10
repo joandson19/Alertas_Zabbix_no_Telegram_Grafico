@@ -1,5 +1,10 @@
+
 # Alertas_Zabbix_no_Telegram_Grafico
 
+* Instale as dependencias para o script
+```
+sudo -H -u zabbix python3 -m pip requests pyzabbix python-telegram-bot
+```
 * Adicione o script notifica-telegram.py dentro de /usr/lib/zabbix/alertscripts/ e crie a pasta log.
 ```
 mkdir /usr/lib/zabbix/alertscripts/log
