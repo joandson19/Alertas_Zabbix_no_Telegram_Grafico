@@ -19,4 +19,4 @@ Serveridade: {EVENT.SEVERITY}
 Item ID: {ITEM.ID1}
 ```
 
-### Este script é uma adaptação do script do [MarreraTech](https://github.com/MarreraTech/Zabbix/tree/main)
+### Este script é uma adaptação do script de envio do [MarreraTech](https://github.com/MarreraTech/Zabbix/tree/main) que no caso dele é usado para enviar o alerta com grafico para o WhatsApp com a API da MarreraTech.
