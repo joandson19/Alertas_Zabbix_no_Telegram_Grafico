@@ -3,7 +3,7 @@
 
 * Instale as dependencias para o script
 ```
-sudo -H -u zabbix python3 -m pip requests pyzabbix python-telegram-bot
+# sudo -H -u zabbix python3 -m pip requests pyzabbix python-telegram-bot
 ```
 * Adicione o script notifica-telegram.py dentro de /usr/lib/zabbix/alertscripts/ e crie a pasta log.
 ```
@@ -14,8 +14,8 @@ sudo -H -u zabbix python3 -m pip requests pyzabbix python-telegram-bot
 ```
 * dê as permissões necessárias
 ```
-chown zabbix. -R /usr/lib/zabbix/alertscripts/*
-chmod  +x /usr/lib/zabbix/alertscripts/notifica-telegram.py
+# chown zabbix. -R /usr/lib/zabbix/alertscripts/*
+# chmod  +x /usr/lib/zabbix/alertscripts/notifica-telegram.py
 ```
 * Importante falar que o "Item ID: {ITEM.ID1}" é obrigatorio no corpo da mensagem para que o grafico funcione.
 Segue um modelo de mensagem, o titulo fica live a sua escolha.
