@@ -7,7 +7,10 @@ sudo -H -u zabbix python3 -m pip requests pyzabbix python-telegram-bot
 ```
 * Adicione o script notifica-telegram.py dentro de /usr/lib/zabbix/alertscripts/ e crie a pasta log.
 ```
-mkdir /usr/lib/zabbix/alertscripts/log
+# cd /tmp
+# git clone https://github.com/joandson19/Alertas_Zabbix_no_Telegram_Grafico.git
+# cd Alertas_Zabbix_no_Telegram_Grafico
+# mv * /usr/lib/zabbix/alertscripts/
 ```
 * dê as permissões necessárias
 ```
