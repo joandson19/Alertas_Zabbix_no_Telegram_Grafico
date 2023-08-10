@@ -16,7 +16,7 @@ urllib3.disable_warnings()
 # Suas configurações e constantes
 TELEGRAM_TOKEN = sys.argv[1]
 TELEGRAM_CHAT_ID = sys.argv[2]
-URL_ZABBIX = "https://127.0.0.1 ou http://127.0.0.1"
+URL_ZABBIX = "https://URL DO ZABBIX"
 USER = "login do zabbix"
 PASS = "senha do zabbix"
 log_file = '/usr/lib/zabbix/alertscripts/log/zabbix_telegram.log'
