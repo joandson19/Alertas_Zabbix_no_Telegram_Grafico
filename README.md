@@ -43,6 +43,9 @@ Item ID: {ITEM.ID1}
 
 
 * Segue exemplo para incidente
+  Caso queira mudar a cor do grafico e só por no corpo da mensagem #FF0000# para vermelho ou #00C800# paraverde. Ou também poderá 
+  adicionar qualquer outra cor colocando entre ## como #CODIGODACOR# no formato html!
+#
   
 ![image](https://github.com/joandson19/Alertas_Zabbix_no_Telegram_Grafico/assets/36518985/a6f09bb1-888d-42cb-9dad-02528d823876)
 * Segue exemplo para resolvido
