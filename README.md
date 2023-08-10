@@ -26,6 +26,15 @@ Serveridade: {EVENT.SEVERITY}
 Último valor: {ITEM.VALUE1}
 Item ID: {ITEM.ID1}
 ```
+* Segue abaixo modo que tem que ficar o "Tipo de Mídia"
+
+![image](https://github.com/joandson19/Alertas_Zabbix_no_Telegram_Grafico/assets/36518985/6017affa-8811-4ddc-9bb6-851e9ee309f6)
+
+* Segue configuração de Midia do Usuario!
+
+![image](https://github.com/joandson19/Alertas_Zabbix_no_Telegram_Grafico/assets/36518985/3d70d58a-149e-474a-892d-6a296afb4afe)
+
+
 * Segue exemplo para incidente
   
 ![image](https://github.com/joandson19/Alertas_Zabbix_no_Telegram_Grafico/assets/36518985/a6f09bb1-888d-42cb-9dad-02528d823876)
