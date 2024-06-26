@@ -7,7 +7,8 @@ from datetime import datetime
 from loguru import logger
 import httpx
 from pyzabbix import ZabbixAPI
-from telegram import Bot, ParseMode
+from telegram import Bot
+from telegram.constants import ParseMode
 
 # Suas configurações e constantes
 TELEGRAM_TOKEN = sys.argv[1]
@@ -25,7 +26,6 @@ HEIGHT = "250"
 DRAW_TYPE = "5"
 PERIOD = "3600"
 NOW = datetime.now()
-CAPTION_TEMPLATE = "Tit: {TITULO}\nDat: {NOW}\n{MENSAGEM}"  # Adicionamos o campo {MENSAGEM}
 
 # Configuração do logger
 logger.add(log_file, rotation=max_log_size, retention=log_count)
@@ -53,7 +53,7 @@ def get_image(item_id, item_name, color_code):
         )
         return response.content
 
-if __name__ == "__main__":
+async def main():
     try:
         assunto = sys.argv[3]  # Captura o assunto do argv[2]
         mensagem = sys.argv[4]
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                 
                 # Enviar a imagem e a mensagem formatada para o Telegram usando URL
                 bot = Bot(token=TELEGRAM_TOKEN)
-                bot.send_photo(
+                await bot.send_photo(
                     TELEGRAM_CHAT_ID,
                     photo=image_data,
                     caption=mensagem_completa,
@@ -95,3 +95,8 @@ if __name__ == "__main__":
             logger.error("Item ID não encontrado na mensagem.")
     except Exception as e:
         logger.exception("Ocorreu um erro:", exc_info=e)
+
+if __name__ == "__main__":
+    import asyncio
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
